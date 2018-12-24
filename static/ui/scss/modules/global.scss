@@ -1,0 +1,21 @@
+// colors
+
+$grey--light : #d1d1d1;
+$grey--dark : darken($grey--light , 60%);
+$white : #fff;
+$black : #000;
+$blue : #3075ce; 
+$media-breakpoint : 45em;
+
+// globals
+
+$w-100: 100%; 
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+    
+}
