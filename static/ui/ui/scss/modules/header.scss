@@ -1,0 +1,19 @@
+
+$grey--light : #f1f1f1;
+$black : #000;
+.header {
+
+    box-shadow: 0 2px 10px $grey--light;
+
+    &__nav {
+        li { display:inline-block; 
+            a { color: $black; font-weight:600;}
+            margin-left:1rem;
+        }
+    }
+
+
+    .cartBtn {
+      background-color: $grey--light;
+    }
+}
