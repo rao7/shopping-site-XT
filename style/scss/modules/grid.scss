@@ -1,0 +1,55 @@
+
+// grid
+$w-100 : 100% ;
+$media-breakpoint : 45em;
+.container {
+    width: $w-100 - 20%;
+    margin:0 auto;
+    @media screen and (max-width:$media-breakpoint) {
+        width:$w-100;
+    }
+}
+
+ .row {
+    display:flex; 
+    flex-direction: row;
+    flex-wrap: wrap;
+    &--v  {flex-direction: column;}
+    @media screen and (max-width:$media-breakpoint) {
+        &--s {flex-direction: column; }
+    }
+    
+    &.center{
+        &--V {align-items: center;}
+        &--H {justify-content: center;}
+    }
+    
+    & [class*="col--"] { 
+        flex-grow: 1;
+        flex-shrink: 0;
+    }
+
+    .col{
+
+        @for $i from 1 through 12 {
+            &--#{$i}{ max-width:$w-100; flex-basis: $w-100;}
+        } 
+       
+            @for $i from 1 through 12 {
+                &--#{$i}--s{ max-width:$w-100/(12/$i); flex-basis: $w-100/(12/$i);}
+            }
+
+
+     
+        @media screen and (min-width:45em){
+            @for $i from 1 through 12 {
+                &--#{$i}{ max-width:$w-100/(12/$i); flex-basis: $w-100/(12/$i);}
+            }
+
+
+            
+        }
+
+    }
+}
+

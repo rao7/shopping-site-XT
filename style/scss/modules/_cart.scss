@@ -1,0 +1,49 @@
+//popUp
+%--x ,.-x { top:-0.7rem; max-height: 5px;}
+.popUP {
+    opacity: 1;
+    height:$w-100;
+    background-color: rgba(0,0,0,0.65);
+    justify-content: flex-end;
+    
+    .popCon {
+
+        &.cart { 
+            margin-right:10%;
+            margin-bottom: 5%;
+            @media screen and (max-width:$media-breakpoint ){
+                margin:0;
+                top:0;
+            }
+        
+        }
+        @extend .easy;
+        background-color: $grey--light;
+        top:10vh;
+        min-height: 4rem;
+        .--x { @extend %--x; }
+        
+        .popUP-txt{
+        max-height: 76vh;
+   
+            }
+    }
+}
+
+input[type="checkbox"].z-pop{
+    &.ddwn:not(:checked) + .dropCon  ,
+    &:not(:checked) + .popUP{
+        @extend .hide;
+    }
+}
+
+.incItem {
+    padding:rem(10) 0;
+    input{ max-width:25px; padding:rem(5); max-height: 25px;}
+    .plus , .minus {
+        width:20px;
+        height:20px;
+        display:inline-block;
+        border-radius:10px;
+    }
+}

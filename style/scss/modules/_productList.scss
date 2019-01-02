@@ -1,0 +1,33 @@
+.product{
+
+    &__category {
+        background-color: $grey--light;
+        
+        ul li {
+            a { color:$grey--dark; font-size:1.2rem; padding:0.85rem 0; display:inline-block;}
+            
+           &:not(:last-child){border-bottom:1px solid $grey--dark;} 
+        }
+    }
+
+    &__list {
+        padding:0.6rem;
+
+        &#{Item}{
+            margin:0.2rem;
+            border-bottom:1px dashed darken($grey--light , 10%);
+                border-radius: 3px;
+                box-shadow: 0 2px 5px $grey--light; 
+
+            & .item {
+                &__desc {
+                    background-color: $grey--light;
+                    padding: 0.25rem;
+                }
+            }
+
+        }
+
+    }
+
+}

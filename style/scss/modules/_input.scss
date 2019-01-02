@@ -1,0 +1,47 @@
+.inpt{ @extend .p-R;
+    
+    input {// input to be get styles
+        border-width:0 0 1px 0;
+        border-style:solid;
+        border-color:$grey--dark;
+        padding:0.75rem 0;
+        @extend ._z9;
+        @extend .p-R;
+        background: transparent;
+        & ~ .uLine{
+            @extend .p-R;
+            @extend .dB;
+            &:after {@extend %underline;  }
+        }
+        
+        &:focus{
+           outline:none;   border:0;
+          & ~ .uLine:after {width: $w-100; padding:1px;}
+        }
+        
+        & ~ label { @extend .p-A; z-index: 0; top:0.5rem; left:0;  @extend .easy ;}
+        &:focus ~ label , &:valid ~ label { background-color: #fff; top:-0.7rem; left:0;
+            font-size:1rem; color:$secondary;/* padding: 0 0.3rem;*/ @extend ._z9;}
+    }
+        &.arwDwn {
+            &:after {
+                right:0.6rem;
+                top:0.6rem;
+                border-color:transparent $secondary $secondary transparent;
+            }
+        }
+        select {
+            -webkit-appearance: none;
+            -moz-appearance:none;
+        }
+    }
+    
+    %underline{
+        content:"";
+        @extend .p-A;
+        @extend ._oB;
+        @extend ._oL;
+        width:0;
+        background-color: $secondary;
+        @extend .easy;
+    }

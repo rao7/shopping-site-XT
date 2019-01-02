@@ -1,0 +1,8 @@
+.btn{
+    padding:1rem 1.5rem;
+    display:inline-block;
+    border-radius:3px;
+    @extend .easy;
+    &--p{background-color:$primary; color:#fff;} 
+    &:hover { box-shadow: 0 rem(4) rem(10) $grey--dark;}
+}

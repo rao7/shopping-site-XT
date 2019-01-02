@@ -1,0 +1,54 @@
+@import 'modules/reset.scss';
+@import 'modules/global.scss';
+@import 'modules/grid.scss';
+@import 'modules/header.scss';
+@import 'modules/footer.scss';
+@import 'modules/home.scss';
+@import 'modules/_productList';
+@import 'modules/_cart';
+@import 'modules/_button';
+@import 'modules/_input';
+
+
+
+:root{
+    font-size: $baseFont;
+    @media screen and (max-width:$media-breakpoint) {
+        font-size: 12px;
+    }
+}
+
+body{
+    font-family: "Dosis";
+    color: darken($grey--dark , 30% );
+    @extend .fw-6;
+    
+}
+
+
+%dB , .view{
+
+     
+    &--none{display:none;
+        @media screen and (max-width:$media-breakpoint) {
+           html>body &--s {display:none;}
+        }
+    }  
+
+}
+
+.card { 
+
+    box-shadow: 1px 2px 5px darken($grey--light , 10%);
+    border-radius: 3px;
+}
+
+
+.login{
+    align-items: center;
+    justify-content: center;
+}
+
+.signup{
+    justify-content: center;
+}

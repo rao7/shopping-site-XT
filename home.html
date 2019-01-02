@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>home</title>
+    <link rel="stylesheet" href="style/app.css">
+</head>
+<body>
+
+   
+    
+<main class="wrapper">
+    <header class="header ">
+        <div class="container">
+            <div class="row center--V">
+                <figure class="logo col--2 p-half col--4--s _C">
+                    <img class="w-100" src="../images/logo.png" alt="sabka bazaar logo"/>
+                </figure>
+                <nav class="header__nav col--8 col--4--s">
+                    <ul class="p-1 hide-s">
+                        <li><a href="home.html">Home</a> </li>
+                        <li><a href="products.html">Products</a> </li>
+                    </ul>
+                </nav>
+                <section class="header__action col--2 col--4--s">
+                    <article class="p-1 hide-s _R Sign-in-up">
+                        <a href="login.html" >Signin</a> 
+                        <a href="signup.html">Register</a>
+                    </article>
+                    <article class="row">
+                            <label for="pop1" class="col--10 p-1 cartBtn row center--V hand _C">
+                                    <i class="dIB col--1--s"></i>
+                                <i class="dIB col--3--s">
+                                        
+                                        <svg version="1.1" id="Layer_1" focusable="false" fill="#d00155" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                             x="0px" y="0px" viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+                                        <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1.003 1.003 0 0 0 20 4H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
+                                        </svg>
+                                </i>
+                                <span class="dIB col--8--s p-half"> 0 Item</span>
+                            </label>
+                        <input type="checkbox"  name="pop" id="pop1" class="z-pop hide">
+                        <section class="popUP p-F _oL _oT bg-b w-100 _C _z999 row">
+                            <div class="popCon cart col--4 col--12--s m_A p-R _L">
+                               <header class="bg-b clr-f">
+                               <h5 class="fw-7 fs-16 camCase p-1">My Cart &nbsp;<small> ( 1 Item )</small> </h5>
+                                <label for="pop1" class="p-A clr-t fs-36 _oR --x p-half hand _z99">×</label>
+                                </header>
+                                <div class="popUP-txt row p-half ">
+
+                                    <article class="cart-item row col--12 bg-f" >
+                                        <figure class="col--2--s p-half "> <img src="../images/products/fruit-n-veg/apple.jpg" alt="" class="w-100" ></figure>
+                                        <p class="col--8--s p-half">
+                                            <strong class="dB">Apple washington regular 4 pcs</strong>
+                                            <span class="incItem p-half dIB">
+                                                    <label for="incNum" class="fs-14 bg-p clr-f minus _C hand">&minus;</label>
+                                                <input readonly type="number" value="1" class="_C bdr-0" id="incNum">
+                                                <label for="incNum" class="fs-14 bg-p clr-f plus _C hand">&plus;</label>
+                                            </span> &nbsp;
+                                            <span class="cartItem--price"> X &nbsp;&nbsp; Rs 187</span>
+
+                                        </p>
+                                        <span class="col--2--s _C p-half cartItem--total dIB"> <b> Rs 187 </b></span>
+                                    </article>
+
+
+                                    <figure class="row bg-f col--12 m-y-1 center--V">
+                                        <img src="../images/lowest-price.png" alt="lowest price" class="p-half w-100 col--3--s" />
+                                        <figcaption class="p-half col--9--s">You won't find it cheaper anywhere</figcaption>
+                                    </figure>
+                                   
+                                </div>
+
+                                <div class="checkout bg-f _C row _oB _oL p-1 p-A _oB _oL">
+                                    <p class="_C col--12">promocode can be aplied on payment page </p>
+                                    
+                                    <button class="btn btn--p row col--12 bdr-0 m-y-1">
+                                        <span class="col--6--s _L dIB">proceed to checkout</span>
+                                        <span class="col--6--s _R dIB">Rs 187</span>
+                                    </button>
+                                </div>
+
+                            </div>
+                            
+                            
+                      </section>
+                    </article>
+                </section>
+
+            </div>
+        </div>
+
+    </header>
+
+    <div class="container mainBody ">
+
+            <div id="heroSlider" class="row dropShadow" >
+        
+                    <div class="sliderCon col--12"> </div>
+                    <ul class="pag"></ul>
+            
+             </div><!-- hero slider-->
+            
+
+            <section id="prodCat" class="row">  </section>
+
+
+
+
+                 </div> <!-- container-->
+            
+
+    </div>
+    
+
+</main> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    var shoppingCart = {
+        serverURL : 'http://localhost:5000/',
+
+        banners : function(){
+            $.ajax({
+                url: this.serverURL+'/banners',
+                dataType: 'json',
+                method:'GET',
+                cache:false,
+                success: function(res){
+                    $.each(res, function (index, value) {
+                        
+                    var slideTemplate = '<input type="radio" name="slide" id="r-slide-'+index+'" /> \
+                    <div class="slide col--12 " id="slide-'+index+'"> \
+                    <img class="w-100" src=".'+value.bannerImageUrl+'" alt="'+value.bannerImageAlt+'" /> </div>';
+                    
+                    var slideNav = '<li><label for="r-slide-'+index+'"></label> </li>';
+
+                    $('#heroSlider > .sliderCon').append(slideTemplate);
+                    $('#heroSlider > ul.pag').append(slideNav);
+                    $('#heroSlider > ul.pag li:first').children('label').addClass('active').click();    
+                    
+                      });
+
+                      shoppingCart.categories();
+                }
+
+            });
+        },
+
+        bannerRotate: function(){ 
+            var getSlider = document.querySelector('#heroSlider ul.pag');
+    
+            var itemStart = 0;
+            var itemCount = getSlider.children.length - 1;
+    
+             setInterval(function(){ 
+               //  console.log(getSlider.children[itemStart])
+             getSlider.children[itemStart].children[0].click();
+
+            if(itemStart == itemCount) { itemStart = 0;}
+            else { itemStart++;}
+            
+            } , 3000 );
+    
+
+          },
+
+        categories:function(){
+            $.ajax({
+                url: this.serverURL+'/categories',
+                dataType: 'json',
+                method:'GET',
+                cache:false,
+                success: function(res){
+                    $.each(res, function (index, value) {
+                        
+                    var slideTemplate = '<div style="order:'+value.order+'" class=" row dropShadow bg-f center--V center--H m-y-1">\
+                         <figure class="col--4 col--3--s p-1">\
+                        <img class="w-100 p-half" src=".'+value.imageUrl+'" alt="">\
+                    </figure>\
+                    <article class="col--7 col--9--s _C p-1">\
+                        <h2 class="p-1 fs-30">'+value.name+'</h2>\
+                        <p class="p-1">'+value.description+'</p>\
+                        <a href="#" data-id="'+value.id+'" class="btn btn--p m-y-1">'+value.name+'</a>\
+                    </article>\
+                     </div>';
+                    
+                   //console.log(value);
+                     if(value.order != -1){
+                        $('#prodCat').append(slideTemplate);
+                     }
+                    
+                      });
+                }
+
+            });
+        }
+    
+    }
+
+    shoppingCart.banners();
+</script>
+</body>
+</html>
