@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>home</title>
-    <link rel="stylesheet" href="style/app.css">
+    <link rel="stylesheet" href="style/css/app.css">
 </head>
 <body>
 
@@ -16,7 +16,7 @@
         <div class="container">
             <div class="row center--V">
                 <figure class="logo col--2 p-half col--4--s _C">
-                    <img class="w-100" src="../images/logo.png" alt="sabka bazaar logo"/>
+                    <img class="w-100" src="./static/images/logo.png" alt="sabka bazaar logo"/>
                 </figure>
                 <nav class="header__nav col--8 col--4--s">
                     <ul class="p-1 hide-s">
@@ -67,7 +67,7 @@
 
 
                                     <figure class="row bg-f col--12 m-y-1 center--V">
-                                        <img src="../images/lowest-price.png" alt="lowest price" class="p-half w-100 col--3--s" />
+                                        <img src="./static/images/lowest-price.png" alt="lowest price" class="p-half w-100 col--3--s" />
                                         <figcaption class="p-half col--9--s">You won't find it cheaper anywhere</figcaption>
                                     </figure>
                                    
@@ -117,89 +117,12 @@
 
 </main> 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="./js/app.js"></script>
 <script>
-    var shoppingCart = {
-        serverURL : 'http://localhost:5000/',
 
-        banners : function(){
-            $.ajax({
-                url: this.serverURL+'/banners',
-                dataType: 'json',
-                method:'GET',
-                cache:false,
-                success: function(res){
-                    $.each(res, function (index, value) {
-                        
-                    var slideTemplate = '<input type="radio" name="slide" id="r-slide-'+index+'" /> \
-                    <div class="slide col--12 " id="slide-'+index+'"> \
-                    <img class="w-100" src=".'+value.bannerImageUrl+'" alt="'+value.bannerImageAlt+'" /> </div>';
-                    
-                    var slideNav = '<li><label for="r-slide-'+index+'"></label> </li>';
+shoppingCart.banners();
+shoppingCart.categories('#prodCat');
 
-                    $('#heroSlider > .sliderCon').append(slideTemplate);
-                    $('#heroSlider > ul.pag').append(slideNav);
-                    $('#heroSlider > ul.pag li:first').children('label').addClass('active').click();    
-                    
-                      });
-
-                      shoppingCart.categories();
-                }
-
-            });
-        },
-
-        bannerRotate: function(){ 
-            var getSlider = document.querySelector('#heroSlider ul.pag');
-    
-            var itemStart = 0;
-            var itemCount = getSlider.children.length - 1;
-    
-             setInterval(function(){ 
-               //  console.log(getSlider.children[itemStart])
-             getSlider.children[itemStart].children[0].click();
-
-            if(itemStart == itemCount) { itemStart = 0;}
-            else { itemStart++;}
-            
-            } , 3000 );
-    
-
-          },
-
-        categories:function(){
-            $.ajax({
-                url: this.serverURL+'/categories',
-                dataType: 'json',
-                method:'GET',
-                cache:false,
-                success: function(res){
-                    $.each(res, function (index, value) {
-                        
-                    var slideTemplate = '<div style="order:'+value.order+'" class=" row dropShadow bg-f center--V center--H m-y-1">\
-                         <figure class="col--4 col--3--s p-1">\
-                        <img class="w-100 p-half" src=".'+value.imageUrl+'" alt="">\
-                    </figure>\
-                    <article class="col--7 col--9--s _C p-1">\
-                        <h2 class="p-1 fs-30">'+value.name+'</h2>\
-                        <p class="p-1">'+value.description+'</p>\
-                        <a href="#" data-id="'+value.id+'" class="btn btn--p m-y-1">'+value.name+'</a>\
-                    </article>\
-                     </div>';
-                    
-                   //console.log(value);
-                     if(value.order != -1){
-                        $('#prodCat').append(slideTemplate);
-                     }
-                    
-                      });
-                }
-
-            });
-        }
-    
-    }
-
-    shoppingCart.banners();
 </script>
 </body>
 </html>

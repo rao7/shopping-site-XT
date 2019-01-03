@@ -1,0 +1,92 @@
+/* line 3, C:/Users/rahrao/Desktop/session/project/code/style/scss/modules/home.scss */
+#heroSlider {
+  margin: 5% auto;
+}
+
+/* line 9, C:/Users/rahrao/Desktop/session/project/code/style/scss/modules/home.scss */
+.sliderCon {
+  display: flex;
+  overflow: hidden;
+  position: relative;
+}
+
+/* line 15, C:/Users/rahrao/Desktop/session/project/code/style/scss/modules/home.scss */
+[name="slide"] {
+  display: none;
+}
+
+/* line 17, C:/Users/rahrao/Desktop/session/project/code/style/scss/modules/home.scss */
+.slide {
+  order: 1;
+  transition: all 0.4s ease-in-out;
+  opacity: 0.8;
+}
+
+/* line 23, C:/Users/rahrao/Desktop/session/project/code/style/scss/modules/home.scss */
+.pag {
+  position: absolute;
+  bottom: rem(20);
+  left: 45%;
+}
+
+/* line 29, C:/Users/rahrao/Desktop/session/project/code/style/scss/modules/home.scss */
+.pag li {
+  display: inline;
+  position: relative;
+  margin-right: 5px;
+}
+
+/* line 31, C:/Users/rahrao/Desktop/session/project/code/style/scss/modules/home.scss */
+.pag li label {
+  width: rem(7);
+  height: rem(7);
+  display: inline-block;
+  background-color: #d8d8d8;
+  border-radius: 5px;
+  margin: 0 rem(5);
+}
+
+/* line 41, C:/Users/rahrao/Desktop/session/project/code/style/scss/modules/home.scss */
+[name="slide"]:checked + div.slide {
+  order: 0;
+  opacity: 1;
+}
+
+/* line 43, C:/Users/rahrao/Desktop/session/project/code/style/scss/modules/home.scss */
+.dropShadow {
+  position: relative;
+}
+
+/* line 48, C:/Users/rahrao/Desktop/session/project/code/style/scss/modules/home.scss */
+.dropShadow:before, .dropShadow:after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+  top: 80%;
+  bottom: rem(5);
+  left: 10%;
+  right: 10%;
+  -moz-border-radius: 100px / 10px;
+  border-radius: 100px / 10px;
+}
+
+/* line 63, C:/Users/rahrao/Desktop/session/project/code/style/scss/modules/home.scss */
+.dropShadow:after {
+  right: 10px;
+  left: auto;
+  -webkit-transform: skew(8deg) rotate(3deg);
+  -moz-transform: skew(8deg) rotate(3deg);
+  -ms-transform: skew(8deg) rotate(3deg);
+  -o-transform: skew(8deg) rotate(3deg);
+  transform: skew(8deg) rotate(3deg);
+}
+
+/* line 78, C:/Users/rahrao/Desktop/session/project/code/style/scss/modules/home.scss */
+#prodCat .row:nth-child(even) figure {
+  order: 1;
+}
+
+/*# sourceMappingURL=../../css/modules/home.map */

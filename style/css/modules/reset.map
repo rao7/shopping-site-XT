@@ -1,0 +1,12 @@
+{
+	"version": 3,
+	"file": "../../scss/modules/reset.css",
+	"sources": [
+		"../../scss/modules/reset.scss"
+	],
+	"sourcesContent": [
+		"@import url('https://fonts.googleapis.com/css?family=Dosis:400,600,700');\r\n\r\n*{ // resets\r\n    margin:0;\r\n    padding: 0;\r\n    box-sizing: border-box;\r\n\r\n    a {text-decoration:none;}\r\n    ul {list-style: none;}\r\n}"
+	],
+	"mappings": "AAAA,OAAO,CAAC,gEAAI;;AAEZ,AAAA,CAAC,CAAA;EACG,MAAM,EAAC,CAAE;EACT,OAAO,EAAE,CAAE;EACX,UAAU,EAAE,UAAW;CAI1B;;;AAPD,AAKI,CALH,CAKG,CAAC,CAAC;EAAC,eAAe,EAAC,IAAK;CAAG;;;AAL/B,AAMI,CANH,CAMG,EAAE,CAAC;EAAC,UAAU,EAAE,IAAK;CAAG",
+	"names": []
+}

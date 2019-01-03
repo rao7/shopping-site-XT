@@ -1,3 +1,5 @@
+$grey--light : #f1f1f1;
+
 #heroSlider {
   
     margin: 5% auto;
@@ -70,3 +72,9 @@
 }
   
   
+
+#prodCat {
+    .row:nth-child(even){
+        figure {order:1;}
+    }
+}
