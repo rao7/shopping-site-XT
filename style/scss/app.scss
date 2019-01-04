@@ -9,7 +9,9 @@
 @import 'modules/_button';
 @import 'modules/_input';
 
-
+a:focus {
+    outline: 1px solid $primary;
+}
 
 :root{
     font-size: $baseFont;
@@ -51,4 +53,29 @@ body{
 
 .signup{
     justify-content: center;
+}
+
+// tablet media
+@media screen and (min-width:$media-breakpoint)and (max-width:65em){
+    
+    header.header {
+        .Sign-in-up { padding: 4px;}
+    }
+
+    .product__list .product__listItem{
+        flex-basis: 33.33%;
+        max-width: 33.33%;
+    }
+
+    .popUP {
+        background-color: transparent;
+
+        .popCon.cart{
+            margin:0;
+            flex-basis: 100%;
+            max-width: 100%;
+            top:8vh;
+            header { margin-top:10px;background-color: #fff; color:$grey--dark;}
+        }
+    }
 }

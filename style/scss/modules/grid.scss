@@ -8,6 +8,10 @@ $media-breakpoint : 45em;
     @media screen and (max-width:$media-breakpoint) {
         width:$w-100;
     }
+
+    @media screen and (min-width:$media-breakpoint)and (max-width:65em){
+        width:$w-100;
+    }
 }
 
  .row {

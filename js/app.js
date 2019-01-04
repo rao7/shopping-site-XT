@@ -1,5 +1,6 @@
 var shoppingCart = {
     serverURL : 'http://localhost:5000/',
+    cart : {},
    
     banners : function(){ // the hero slider
         $.ajax({
@@ -47,7 +48,7 @@ var shoppingCart = {
 
       },
 
-    categories:function(selector , nameOnly = false){ // fetching categories
+    categories:function(selector , nameOnly){ // fetching categories
         $.ajax({
             url: this.serverURL+'/categories',
             dataType: 'json',
@@ -59,13 +60,13 @@ var shoppingCart = {
                 if(nameOnly != true ){
 
                 var catTemplate = '<div style="order:'+value.order+'" class=" row dropShadow bg-f center--V center--H m-y-1">\
-                     <figure class="col--4 col--3--s p-1">\
-                    <img class="w-100 p-half" src=".'+value.imageUrl+'" alt="">\
+                     <figure class="col--4 col--4--s p-1">\
+                    <img class="w-100 p-half" src=".'+value.imageUrl+'" alt="'+value.name+'">\
                 </figure>\
-                <article class="col--7 col--9--s _C p-1">\
+                <article class="col--7 col--8--s _C p-1">\
                     <h2 class="p-1 fs-30">'+value.name+'</h2>\
                     <p class="p-1">'+value.description+'</p>\
-                    <a href="#" data-id="'+value.id+'" class="btn btn--p m-y-1">'+value.name+'</a>\
+                    <a href="products.html" data-id="'+value.id+'" class="btn btn--p m-y-1">'+value.name+'</a>\
                 </article>\
                  </div>';
                  
@@ -73,8 +74,6 @@ var shoppingCart = {
                 }
 
                 else{
-
-                    //var catTemplate = '<li><a data-catid="'+value.id+'" href="javascript:void(0)">'+value.name+'</a></li>';
                     var catTemplate = '<li><label data-catid="'+value.id+'" for="filterDown">'+value.name+'</label></li>'
                 }
 
@@ -101,7 +100,7 @@ var shoppingCart = {
                         sessionStorage.setItem('products', JSON.stringify(res));
                     }
 
-                  } 
+                } 
 
                 $.each(res, function (index, value) {
                     
@@ -118,7 +117,7 @@ var shoppingCart = {
                      <p class="item__price col--6 p-1 fw-6">  MRP. Rs '+value.price+'  </p>\
                     \
                     <p class="item__buy col--6">\
-                        <button data-stock ="'+value.stock+'" class="btn btn--p w-100 bdr-0 m-y-1">  Buy Now </button>\
+                        <button onClick= shoppingCart.buyNow("'+value.id+'","'+value.stock+'") data-stock ="'+value.stock+'" class="btn btn--p w-100 bdr-0 m-y-1" >  Buy Now </button>\
                     </p>\
                 </div>\
             </article>';
@@ -131,21 +130,64 @@ var shoppingCart = {
         });
 
     },
-    cart: function(pid){
+    buyNow:function(pid , stock){
 
-        var cart = [];
+        
+
+        if(!this.cart[pid]){
+            this.cart[pid] = 1;
+            sessionStorage.setItem('cart',JSON.stringify(this.cart));
+
+        }else{
+            this.cart[pid] = this.cart[pid] + 1; 
+            sessionStorage.setItem('cart',JSON.stringify(this.cart));
+        }
+
+        this.getcart();
+       // console.log(this.cart);
+
+    },
+    getcart: function(){
+
+        //debugger;
         if (typeof(Storage) !== "undefined") {
                   
-            if(!sessionStorage.cart){
-                sessionStorage.setItem('cart', JSON.stringify(cart));
-            }
+                if(!sessionStorage.getItem('cart')){
+                sessionStorage.setItem('cart', JSON.stringify(this.cart));
+                //console.log(sessionStorage.getItem('cart'));
+                }else{
+                    var cartValue = sessionStorage.getItem('cart');
+                    //console.log(JSON.parse(cartValue));
+                    var count = Object.keys(JSON.parse(cartValue)).length;
+ 
+                    $('.cartBtn span').html(count+' Item');
+                    this.updateCart();
+                }
 
           } 
     }, 
 
-    updateCart : function(id){
-        var updateCart = JSON.parse(sessionStorage.getItem('products')).filter((el) => el.id === id );
-        sessionStorage.setItem('cart', JSON.stringify(updateCart));
+    updateCart : function(){
+        var finalCart = [];
+        $.each(Object.keys(JSON.parse(sessionStorage.cart)), function( index, valueid ) {
+            var updateCart = JSON.parse(sessionStorage.getItem('products')).filter(function(el){
+               // console.log(el.id == valueid);
+               return el.id == valueid;
+
+                
+            });
+
+            finalCart.push(updateCart[0]);
+            console.log(updateCart);
+
+           // console.log(valueid);
+
+          });
+          console.log(finalCart);
+
+          
     }
 
 }
+
+shoppingCart.getcart();

@@ -10,9 +10,14 @@
 <body>
 
    
+<ul class="skip-links" aria-label="goto links">
+    <li><a href="#sign_up-in">signup</a> </li>
+    <li><a href="#prodCat">categories</a></li>
+    <li><a href="#footer">footer</a></li>
+</ul>
     
 <main class="wrapper">
-    <header class="header ">
+    <header class="header " aria-role="banner">
         <div class="container">
             <div class="row center--V">
                 <figure class="logo col--2 p-half col--4--s _C">
@@ -24,33 +29,33 @@
                         <li><a href="products.html">Products</a> </li>
                     </ul>
                 </nav>
-                <section class="header__action col--2 col--4--s">
+                <section id="sign_up-in" class="header__action col--2 col--4--s">
                     <article class="p-1 hide-s _R Sign-in-up">
                         <a href="login.html" >Signin</a> 
                         <a href="signup.html">Register</a>
                     </article>
                     <article class="row">
-                            <label for="pop1" class="col--10 p-1 cartBtn row center--V hand _C">
-                                    <i class="dIB col--1--s"></i>
-                                <i class="dIB col--3--s">
+                            <label  aria-haspopup ="true" for="pop1" class="col--10 p-1 cartBtn row center--V hand _C">
+                                    <em class="dIB col--1--s"></em>
+                                <em class="dIB col--3--s">
                                         
                                         <svg version="1.1" id="Layer_1" focusable="false" fill="#d00155" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                              x="0px" y="0px" viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
                                         <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1.003 1.003 0 0 0 20 4H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
                                         </svg>
-                                </i>
+                                    </em>
                                 <span class="dIB col--8--s p-half"> 0 Item</span>
                             </label>
                         <input type="checkbox"  name="pop" id="pop1" class="z-pop hide">
-                        <section class="popUP p-F _oL _oT bg-b w-100 _C _z999 row">
+                        <section class="popUP p-F _oL _oT bg-b w-100 _C _z999 row" aria-role="dialog">
                             <div class="popCon cart col--4 col--12--s m_A p-R _L">
                                <header class="bg-b clr-f">
                                <h5 class="fw-7 fs-16 camCase p-1">My Cart &nbsp;<small> ( 1 Item )</small> </h5>
                                 <label for="pop1" class="p-A clr-t fs-36 _oR --x p-half hand _z99">×</label>
                                 </header>
                                 <div class="popUP-txt row p-half ">
-
-                                    <article class="cart-item row col--12 bg-f" >
+                                    <p class="p-1 col--12 _C">No Item in Cart</p>
+                                   <!--<article class="cart-item row col--12 bg-f" >
                                         <figure class="col--2--s p-half "> <img src="../images/products/fruit-n-veg/apple.jpg" alt="" class="w-100" ></figure>
                                         <p class="col--8--s p-half">
                                             <strong class="dB">Apple washington regular 4 pcs</strong>
@@ -62,25 +67,25 @@
                                             <span class="cartItem--price"> X &nbsp;&nbsp; Rs 187</span>
 
                                         </p>
-                                        <span class="col--2--s _C p-half cartItem--total dIB"> <b> Rs 187 </b></span>
+                                        <span class="col--2--s _C p-half cartItem--total dIB"> <strong> Rs 187 </strong></span>
                                     </article>
 
 
                                     <figure class="row bg-f col--12 m-y-1 center--V">
                                         <img src="./static/images/lowest-price.png" alt="lowest price" class="p-half w-100 col--3--s" />
                                         <figcaption class="p-half col--9--s">You won't find it cheaper anywhere</figcaption>
-                                    </figure>
+                                    </figure>-->
                                    
                                 </div>
 
-                                <div class="checkout bg-f _C row _oB _oL p-1 p-A _oB _oL">
+                                <!--<div class="checkout bg-f _C row _oB _oL p-1 p-A _oB _oL">
                                     <p class="_C col--12">promocode can be aplied on payment page </p>
                                     
-                                    <button class="btn btn--p row col--12 bdr-0 m-y-1">
+                                    <button class="btn btn--p row col--12 bdr-0 m-y-1" aria-label="proceed to checkout">
                                         <span class="col--6--s _L dIB">proceed to checkout</span>
                                         <span class="col--6--s _R dIB">Rs 187</span>
                                     </button>
-                                </div>
+                                </div>-->
 
                             </div>
                             
@@ -96,7 +101,7 @@
 
     <div class="container mainBody ">
 
-            <div id="heroSlider" class="row dropShadow" >
+            <div id="heroSlider" class="row dropShadow" aria-label="offers slides" >
         
                     <div class="sliderCon col--12"> </div>
                     <ul class="pag"></ul>
@@ -104,7 +109,7 @@
              </div><!-- hero slider-->
             
 
-            <section id="prodCat" class="row">  </section>
+            <section id="prodCat" aria-label="product categories">  </section>
 
 
 
@@ -113,15 +118,16 @@
             
 
     </div>
-    
+    <footer id="footer" class="footer p-1 _C">
+            Copyright &copy; Sabka Bazaar Grocery Supplies Pvt. Ltd.
+    </footer>
 
 </main> 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" ></script>
 <script src="./js/app.js"></script>
 <script>
-
 shoppingCart.banners();
-shoppingCart.categories('#prodCat');
+shoppingCart.categories('#prodCat', false);
 
 </script>
 </body>

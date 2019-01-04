@@ -44,6 +44,10 @@ $grey--light : #f1f1f1;
 {
     position:relative;
 
+    @media screen and (max-width:$media-breakpoint){
+        figure{padding:0;}
+    }
+
 }
 .dropShadow:before, .dropShadow:after
 {
@@ -76,5 +80,15 @@ $grey--light : #f1f1f1;
 #prodCat {
     .row:nth-child(even){
         figure {order:1;}
+    }
+}
+
+
+.skip-links a {position: absolute; top:-3em;
+    &:focus{
+        top:0;
+        background-color: $grey--dark;
+        padding: 0.5rem;
+        color:$white;
     }
 }
