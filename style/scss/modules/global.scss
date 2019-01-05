@@ -67,6 +67,8 @@ input[type=number]::-webkit-outer-spin-button {
 .dF{ display:flex;}
 .dIF{ display:inline-flex;}
 .hide {display:none;}
+.hidden {visibility:hidden;}
+
 @media screen and (max-width:$media-breakpoint){
   .hide-s { display: none;}
 }

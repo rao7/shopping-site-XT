@@ -132,8 +132,6 @@ var shoppingCart = {
     },
     buyNow:function(pid , stock){
 
-        
-
         if(!this.cart[pid]){
             this.cart[pid] = 1;
             sessionStorage.setItem('cart',JSON.stringify(this.cart));
@@ -202,11 +200,26 @@ var shoppingCart = {
           <span class="col--2--s _C p-half cartItem--total dIB"> <strong> Rs '+value.price * perItemCount[value.id] +' </strong></span>\
       </article> ';
 
-      totalPrice += value.price;
+      totalPrice += value.price * perItemCount[value.id];
 
           });
 
-          $('#cartBox').html(cartItemTemplate).siblings('.checkout').find('#totalPrice').text('Rs '+totalPrice);
+          cartItemTemplate += '<figure class="row bg-f col--12 m-y-1 center--V">\
+          <img src="./static/images/lowest-price.png" alt="lowest price" class="p-half w-100 col--3--s" />\
+          <figcaption class="p-half col--9--s">You wont find it cheaper anywhere</figcaption>\
+      </figure>';
+
+          cartCheckoutTemplate = '<div class="checkout bg-f _C row _oB _oL p-1 p-A _oB _oL ">\
+          <p class="_C col--12">promocode can be aplied on payment page </p>\
+           <button class="btn btn--p row col--12 bdr-0 m-y-1" aria-label="proceed to checkout">\
+              <span class="col--6--s _L dIB">proceed to checkout</span>\
+              <span id="totalPrice" class="col--6--s _R dIB ">Rs '+totalPrice+'</span>\
+          </button>\
+      </div>';
+
+      $('#cartBox').html(cartItemTemplate).siblings('.checkout').remove();
+      $(cartCheckoutTemplate).insertAfter('#cartBox');
+        //   $('#cartBox').html(cartItemTemplate).siblings('.checkout').find('#totalPrice').text('Rs '+totalPrice);
 
         }else{
             $('#cartBox').html('');
@@ -240,6 +253,8 @@ var shoppingCart = {
                 var getCartStorage2 = JSON.parse(sessionStorage.cart);
                 delete(getCartStorage2[id]);
                 sessionStorage.setItem('cart', JSON.stringify(getCartStorage2));
+
+                $('#cartBox').html('<p> No Items in cart</p>').siblings('.checkout').remove();
                 this.getcart();
 
             }
