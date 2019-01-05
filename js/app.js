@@ -139,8 +139,8 @@ var shoppingCart = {
             sessionStorage.setItem('cart',JSON.stringify(this.cart));
 
         }else{
-            this.cart[pid] = this.cart[pid] + 1; 
-            sessionStorage.setItem('cart',JSON.stringify(this.cart));
+
+            this.plusMinusItem('plus', pid);
         }
 
         this.getcart();
@@ -160,7 +160,7 @@ var shoppingCart = {
                     //console.log(JSON.parse(cartValue));
                     var count = Object.keys(JSON.parse(cartValue)).length;
  
-                    $('.cartBtn span').html(count+' Item');
+                    $('.bucketSize').html(count+' Item');
                     this.updateCart();
                 }
 
@@ -168,24 +168,82 @@ var shoppingCart = {
     }, 
 
     updateCart : function(){
+
         var finalCart = [];
+
+        if(Object.keys(JSON.parse(sessionStorage.cart)).length > 0 ){
+
         $.each(Object.keys(JSON.parse(sessionStorage.cart)), function( index, valueid ) {
             var updateCart = JSON.parse(sessionStorage.getItem('products')).filter(function(el){
                // console.log(el.id == valueid);
                return el.id == valueid;
-
-                
+     
             });
+                
+                 finalCart.push(updateCart[0]);
+             });
+         // console.log(finalCart);
 
-            finalCart.push(updateCart[0]);
-            console.log(updateCart);
+          var totalPrice = 0;
+          var cartItemTemplate = '';
+          $.each(finalCart, function (index, value) {
+            var perItemCount = JSON.parse(sessionStorage.cart);
+          cartItemTemplate += ' <article class="cart-item row col--12 bg-f" >\
+          <figure class="col--2--s p-half "> <img src=".'+value.imageURL+'" alt="'+value.name+'" class="w-100" ></figure>\
+          <p class="col--8--s p-half">\
+              <strong class="dB">'+value.name+'</strong>\
+              <span class="incItem p-half dIB">\
+                      <label for="incNum" class="fs-14 bg-p clr-f minus _C hand" onClick = shoppingCart.plusMinusItem("minus","'+value.id+'","'+perItemCount[value.id]+'") >&minus;</label>\
+                  <input readonly type="number" value="'+perItemCount[value.id]+'" class="_C bdr-0" id="incNum" />\
+                  <label for="incNum" class="fs-14 bg-p clr-f plus _C hand" onClick = shoppingCart.plusMinusItem("plus","'+value.id+'","'+perItemCount[value.id]+'") >&plus;</label>\
+              </span> &nbsp;\
+              <span class="cartItem--price" > X &nbsp;&nbsp; Rs '+value.price+'</span>\
+          </p>\
+          <span class="col--2--s _C p-half cartItem--total dIB"> <strong> Rs '+value.price * perItemCount[value.id] +' </strong></span>\
+      </article> ';
 
-           // console.log(valueid);
+      totalPrice += value.price;
 
           });
-          console.log(finalCart);
 
+          $('#cartBox').html(cartItemTemplate).siblings('.checkout').find('#totalPrice').text('Rs '+totalPrice);
+
+        }else{
+            $('#cartBox').html('');
+        }
           
+    },
+
+    plusMinusItem:function(type , id , itemCount){
+        if(type==='plus'){
+
+            var getCartStorage = JSON.parse(sessionStorage.cart);
+             getCartStorage[id] = getCartStorage[id] + 1;
+             sessionStorage.setItem('cart', JSON.stringify(getCartStorage));
+             // call update cart
+             this.getcart();
+        }
+
+        if(type==='minus'){
+
+            console.log(itemCount);
+           
+            if(itemCount > 1){
+                var getCartStorage1 = JSON.parse(sessionStorage.cart);
+                getCartStorage1[id] = getCartStorage1[id] - 1;
+                sessionStorage.setItem('cart', JSON.stringify(getCartStorage1));
+                this.getcart();
+
+            }
+            else{
+                
+                var getCartStorage2 = JSON.parse(sessionStorage.cart);
+                delete(getCartStorage2[id]);
+                sessionStorage.setItem('cart', JSON.stringify(getCartStorage2));
+                this.getcart();
+
+            }
+        }
     }
 
 }
